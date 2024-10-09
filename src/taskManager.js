@@ -22,7 +22,7 @@ function TaskManager() {
   }, []);
 
   const fetchTasks = () => {
-    axios.get('http://localhost:5000/tasks')
+    axios.get('https://todo-backend-dmiu.onrender.com/tasks')
       .then(response => {
         setTasks(response.data);
       })
@@ -30,7 +30,7 @@ function TaskManager() {
   };
 
   const handleAddTask = () => {
-    axios.post('http://localhost:5000/tasks', newTask)
+    axios.post('https://todo-backend-dmiu.onrender.com/tasks', newTask)
       .then(response => {
         setTasks([...tasks, response.data]);
         resetForm();
@@ -39,7 +39,7 @@ function TaskManager() {
   };
 
   const handleUpdateTask = () => {
-    axios.put(`http://localhost:5000/tasks/${currentTaskId}`, newTask)
+    axios.put(`https://todo-backend-dmiu.onrender.com/tasks/${currentTaskId}`, newTask)
       .then(response => {
         const updatedTasks = tasks.map(task =>
           task.id === currentTaskId ? response.data : task
@@ -51,7 +51,7 @@ function TaskManager() {
   };
 
   const handleDeleteTask = (id) => {
-    axios.delete(`http://localhost:5000/tasks/${id}`)
+    axios.delete(`https://todo-backend-dmiu.onrender.com/tasks/${id}`)
       .then(() => {
         setTasks(tasks.filter(task => task.id !== id));
       })
